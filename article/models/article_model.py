@@ -7,6 +7,7 @@ class Article(models.Model):
         max_length=255,
         primary_key=True,
         default='-',
+        name='slug',
         help_text='This field is autocreated.'
     )
 
@@ -42,3 +43,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def publish_date(self):
+        return f'{self.created_at.date()} at {self.created_at.time()}'
+
